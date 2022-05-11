@@ -1,0 +1,19 @@
+{
+  "presets": [
+    "@babel/env",
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-import-remove-resource-query"
+      ]
+    }
+  }
+}
