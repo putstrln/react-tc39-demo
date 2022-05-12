@@ -1,4 +1,6 @@
-.app {
+main {
   font-family: helvetica, arial, sans-serif;
-  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 1em);
 }

@@ -1,7 +1,10 @@
 // shared config (dev and prod)
 const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const webpack = require("webpack");
 
+const baseUrl = process.env.BASE_URL ?? "/";
 module.exports = {
   entry: "./index.tsx",
   resolve: {
@@ -38,5 +41,25 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "index.html.ejs" })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "index.html.ejs",
+      baseUrl,
+    }),
+    new webpack.EnvironmentPlugin({
+      BASE_URL: baseUrl,
+      debug: false,
+    }),
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: true,
+          keep_fnames: true,
+        },
+      }),
+    ],
+  },
 };

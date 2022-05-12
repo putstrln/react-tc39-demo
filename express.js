@@ -1,9 +1,15 @@
-const express = require('express');
+const express = require("express");
+const path = require("path");
 const app = express();
 const portNumber = 3000;
-const sourceDir = 'dist';
+const sourceDir = path.join(__dirname, "dist");
 
 app.use(express.static(sourceDir));
+
+// Handles any requests that don't match the ones above
+app.get("*", (req, res) => {
+  res.sendFile(path.join(sourceDir, "index.html"));
+});
 
 app.listen(portNumber, () => {
   console.log(`Express web server started: http://localhost:${portNumber}`);
