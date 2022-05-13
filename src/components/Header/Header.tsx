@@ -4,8 +4,11 @@ import "./Header.scss";
 export const Header = () => {
   return (
     <div className="Header">
-      <div>
+      <Link to="/">Home</Link>
+      <div className="types">
         <Link to="/tc39">TC39</Link>
+        <span>/</span>
+        <Link to="/react">React</Link>
       </div>
       <a
         className="git-link"

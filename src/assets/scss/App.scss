@@ -2,5 +2,8 @@ main {
   font-family: helvetica, arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 1em);
+  height: calc(100vh - 1em);
+  .body {
+    overflow-y: auto;
+  }
 }

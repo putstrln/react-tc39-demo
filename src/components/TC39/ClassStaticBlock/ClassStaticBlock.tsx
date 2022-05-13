@@ -27,7 +27,7 @@ getRectName(rect);`}
         <li>
           We can define external functions that have access to private fields as
           well such as <strong>getRectName</strong>. The above will return
-          {getRectName(rect)}
+          &nbsp;"{getRectName(rect)}"
         </li>
       </ul>
     </div>

@@ -6,4 +6,12 @@
         width: 35px;
         height: 35px;
     }
+    .types {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        a {
+            margin: 0 2em;
+        }
+    }
 }
