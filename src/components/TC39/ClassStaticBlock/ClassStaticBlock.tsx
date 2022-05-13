@@ -1,4 +1,4 @@
-import source from "./ClassStaticBlockSource.ts?source";
+import source from "./ClassStaticBlockSource.tsx?source";
 import { getRectName, Rect } from "./ClassStaticBlockSource";
 import { Source } from "../../Source/Source";
 
@@ -6,7 +6,7 @@ export const ClassStaticBlock = () => {
   const rect = new Rect("private name");
   return (
     <div>
-      Given <Source>{source}</Source>
+      <Source>{source}</Source>
       <ul>
         <li>
           Static block gives us the ability to initialize static values using

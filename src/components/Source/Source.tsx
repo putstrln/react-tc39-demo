@@ -5,10 +5,13 @@ interface SourceProps {
   children: ReactChild;
 }
 export const Source = ({ children }: SourceProps) => (
-  <CopyBlock
-    text={children}
-    theme={codepen}
-    language="typescript"
-    codeBlock
-  ></CopyBlock>
+  <div>
+    <div>Source</div>
+    <CopyBlock
+      text={children}
+      theme={codepen}
+      language="typescript"
+      codeBlock
+    ></CopyBlock>
+  </div>
 );
