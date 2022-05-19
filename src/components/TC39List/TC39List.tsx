@@ -1,27 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { FeatureType } from "../../constants";
+import { FeatureList } from "../FeatureList/FeatureList";
 import { ClassStaticBlock } from "../TC39/ClassStaticBlock/ClassStaticBlock";
+import { GlobalThis } from "../TC39/GlobalThis/GlobalThis";
 
-const features = [ClassStaticBlock];
+const features = [ClassStaticBlock, GlobalThis];
 
-export const TC39List = () => {
-  const { featureName } = useParams();
-  const Feature = features.find((f) => f.name === featureName);
-  console.debug(featureName, Feature, features);
-  return (
-    <>
-      <ol>
-        {features.map((f) => (
-          <li key={f.name}>
-            <Link to={`/tc39/${f.name}`}>{f.name}</Link>
-          </li>
-        ))}
-      </ol>
-      {Feature && (
-        <>
-          <h1>{featureName}</h1>
-          {Feature && <Feature />}
-        </>
-      )}
-    </>
-  );
-};
+export const TC39List = () => (
+  <FeatureList features={features} type={FeatureType.TC39} />
+);

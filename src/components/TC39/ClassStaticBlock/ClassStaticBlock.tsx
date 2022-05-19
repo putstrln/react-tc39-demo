@@ -1,11 +1,15 @@
 import source from "./ClassStaticBlockSource.tsx?source";
 import { getRectName, Rect } from "./ClassStaticBlockSource";
 import { Source } from "../../Source/Source";
+import { Feature } from "../../Feature/Feature";
 
 export const ClassStaticBlock = () => {
   const rect = new Rect("private name");
   return (
-    <div>
+    <Feature
+      name={ClassStaticBlock.name}
+      refUrl="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_static_initialization_blocks"
+    >
       <Source>{source}</Source>
       <ul>
         <li>
@@ -30,6 +34,6 @@ getRectName(rect);`}
           &nbsp;"{getRectName(rect)}"
         </li>
       </ul>
-    </div>
+    </Feature>
   );
 };
