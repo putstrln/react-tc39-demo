@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Feature } from "../../Feature/Feature";
+import { Notes } from "../../Notes/Notes";
 import { Source } from "../../Source/Source";
-import { getAnyPromiseExample } from "./PromiseAnySource";
+import { getPromiseAnyExample } from "./PromiseAnySource";
 import source from "./PromiseAnySource?source";
 
 export const PromiseAny = () => {
   const [results, setResults] = useState([]);
   useEffect(() => {
     const getResults = async () => {
-      const results = await getAnyPromiseExample();
+      const results = await getPromiseAnyExample();
       setResults(results);
       console.debug(results);
     };
@@ -22,8 +24,9 @@ export const PromiseAny = () => {
       <ul>
         <li>One of promise combinators</li>
         <li>
-          Returns the first{" "}
-          <a href="https://stackoverflow.com/a/56850392">fulfilled</a> promise
+          Returns the first fulfilled promise without waiting for others, unlike
+          Promise.race which returns the first settled promise (either fulfilled
+          or rejected)
         </li>
         <li>
           If all are rejected, return{" "}
@@ -45,6 +48,20 @@ export const PromiseAny = () => {
           <li>AggregateError.errors: {results[2].errors.join(", ")}</li>
         </ul>
       )}
+      <Notes>
+        <li>
+          <a
+            href="https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Promise states and fates
+          </a>
+        </li>
+        <li>
+          <Link to="/tc39/PromiseAllSettled">PromiseAllSettled</Link>
+        </li>
+      </Notes>
     </Feature>
   );
 };
