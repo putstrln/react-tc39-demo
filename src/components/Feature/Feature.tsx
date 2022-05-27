@@ -5,7 +5,7 @@ import "./Feature.scss";
 interface FeatureProps {
   name: string;
   refUrl: string;
-  children: ReactChild[];
+  children: ReactChild | ReactChild[];
 }
 
 export const Feature = ({ children, name, refUrl }: FeatureProps) => (
