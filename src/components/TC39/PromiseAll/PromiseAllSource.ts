@@ -5,15 +5,15 @@ const allGood = () => [getGoodPromise(1), getGoodPromise(2), getGoodPromise(3)];
 const someGood = () => [getBadPromise(1), getGoodPromise(1), getBadPromise(2)];
 const allBad = () => [getBadPromise(1), getBadPromise(2), getBadPromise(3)];
 
-export const getPromiseAnyExample = async () => {
+export const getPromiseAllExample = async () => {
   const results = [];
   [allGood, someGood, allBad].forEach(async (p) => {
     try {
-      // returns the first fulfilled promise
+      // returns an array of resolved values if ALL are fulfilled
       const promiseArray = p();
-      results.push(await Promise.any(promiseArray));
+      results.push(await Promise.all(promiseArray));
     } catch (e) {
-      // returns AggregateError if ALL are rejected
+      // returns the error of first rejected
       results.push(e);
     }
   });

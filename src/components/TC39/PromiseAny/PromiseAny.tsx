@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Feature } from "../../Feature/Feature";
 import { Notes } from "../../Notes/Notes";
 import { Source } from "../../Source/Source";
+import { PromiseCombinatorLinks } from "../Promise/Promise";
 import { getPromiseAnyExample } from "./PromiseAnySource";
 import source from "./PromiseAnySource?source";
 
@@ -58,9 +59,7 @@ export const PromiseAny = () => {
             Promise states and fates
           </a>
         </li>
-        <li>
-          <Link to="/tc39/PromiseAllSettled">PromiseAllSettled</Link>
-        </li>
+        <PromiseCombinatorLinks />
       </Notes>
     </Feature>
   );

@@ -8,12 +8,14 @@ export interface FeatureListProps {
 }
 export const FeatureList = ({ features, type }: FeatureListProps) => {
   const { featureName } = useParams();
-  const Feature = features.find((f) => f.name === featureName);
-  console.debug(featureName, Feature, features);
+  const sortedFeatures = [...features];
+  sortedFeatures.sort((a, b) => a.name.localeCompare(b.name));
+  const Feature = sortedFeatures.find((f) => f.name === featureName);
+  console.debug(featureName, Feature, sortedFeatures);
   return (
     <>
       <ol>
-        {features.map((f) => (
+        {sortedFeatures.map((f) => (
           <li key={f.name}>
             <Link to={`/${type}/${f.name}`}>{f.name}</Link>
           </li>

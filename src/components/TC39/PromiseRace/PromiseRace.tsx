@@ -1,17 +1,17 @@
-import source from "./PromiseAllSettledSource?source";
+import source from "./PromiseRaceSource?source";
 import { Feature } from "../../Feature/Feature";
 import { useState, useEffect } from "react";
 import { Source } from "../../Source/Source";
 import { Notes } from "../../Notes/Notes";
-import { getPromiseAllSettledExample } from "./PromiseAllSettledSource";
+import { getPromiseRaceExample } from "./PromiseRaceSource";
 import { Link } from "react-router-dom";
 import { PromiseCombinatorLinks } from "../Promise/Promise";
 
-export const PromiseAllSettled = () => {
+export const PromiseRace = () => {
   const [results, setResults] = useState([]);
   useEffect(() => {
     const getResults = async () => {
-      const results = await getPromiseAllSettledExample();
+      const results = await getPromiseRaceExample();
       setResults(results);
       console.debug(results);
     };
@@ -19,20 +19,22 @@ export const PromiseAllSettled = () => {
   }, []);
   return (
     <Feature
-      name={PromiseAllSettled.name}
-      refUrl={"https://github.com/tc39/proposal-promise-allSettled"}
+      name={PromiseRace.name}
+      refUrl={
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race"
+      }
     >
       <ul>
         <li>One of promise combinators</li>
         <li>
-          Returns an array of results (either value or error) when all promises
-          are settled (either fulfilled or rejected).
+          Returns either the value or the error of the first promise that
+          settles, unlike Promise.allSettled that returns the array of values or
+          errors and waits until all promises are settled
         </li>
         <li>
-          Unlike Promise.all, we don't need to catch rejections since they'll be
-          returned as state objects
+          Can be used to timeout an async operation with setTimeout promise,
         </li>
-        <li>Can be used to get the settled states of all promises</li>
+        <li>Can be blocked forever if the promise array is empty</li>
       </ul>
       <Source>{source}</Source>
       <br></br>

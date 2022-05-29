@@ -1,9 +1,9 @@
-const getGoodPromise = () => Promise.resolve("good promise");
-const getBadPromise = () => Promise.reject("bad promise");
+const getGoodPromise = (i) => Promise.resolve(`good promise ${i}`);
+const getBadPromise = (i) => Promise.reject(`bad promise ${i}`);
 
-const allGood = () => [getGoodPromise(), getGoodPromise(), getGoodPromise()];
-const someGood = () => [getBadPromise(), getGoodPromise(), getBadPromise()];
-const allBad = () => [getBadPromise(), getBadPromise(), getBadPromise()];
+const allGood = () => [getGoodPromise(1), getGoodPromise(2), getGoodPromise(3)];
+const someGood = () => [getBadPromise(1), getGoodPromise(1), getBadPromise(2)];
+const allBad = () => [getBadPromise(1), getBadPromise(2), getBadPromise(3)];
 
 export const getPromiseAllSettledExample = async () => {
   const results = [];
